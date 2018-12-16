@@ -35,8 +35,8 @@ if (isset($_POST['reg_user'])) {
       array_push($errors, "Password is required"); 
     }
   if ($password_1 != $password_2) {
-  }
     array_push($errors, "The two passwords do not match");
+  }
    
 
   // first check the database to make sure 
@@ -69,7 +69,5 @@ if (isset($_POST['reg_user'])) {
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
   	header('location: index.php');
-  }else {
-    array_push($errors, "Wrong username/password combination");
-}
+  }
 }

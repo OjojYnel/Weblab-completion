@@ -43,24 +43,7 @@ include 'registration.php';
 
 </head>
 
-<style>
-.error {
-  width: 92%; 
-  margin: 0px auto; 
-  padding: 10px; 
-  border: 1px solid #a94442; 
-  color: #a94442; 
-  background: #f2dede; 
-  border-radius: 5px; 
-  text-align: left;
-}
-.success {
-  color: #3c763d; 
-  background: #dff0d8; 
-  border: 1px solid #3c763d;
-  margin-bottom: 20px;
-}
-</style>
+
 
  <?php
 
@@ -103,8 +86,8 @@ if (isset($_POST['login_user'])) {
                             </a>
                         </div>
                         <div class="login-form">
+                        <?php include('errors.php'); ?>
                             <form action="" method="post">
-                            <?php include('errors.php'); ?>
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input class="au-input au-input--full" type="text" name="username" placeholder="Username">

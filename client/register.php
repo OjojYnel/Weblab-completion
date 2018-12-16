@@ -41,26 +41,6 @@ include 'registration.php';
 
 </head>
 
-<style>
-.error {
-  width: 92%; 
-  margin: 0px auto; 
-  padding: 10px; 
-  border: 1px solid #a94442; 
-  color: #a94442; 
-  background: #f2dede; 
-  border-radius: 5px; 
-  text-align: left;
-}
-.success {
-  color: #3c763d; 
-  background: #dff0d8; 
-  border: 1px solid #3c763d;
-  margin-bottom: 20px;
-}
-</style>
-
-
 <body class="animsition">
     <div class="page-wrapper">
         <div class="page-content--bge5">
@@ -73,7 +53,7 @@ include 'registration.php';
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="registration.php" method="post">
+                            <form action="register.php" method="post">
                             <?php include('errors.php'); ?>
                             <div class="form-group">
                                     <label>First Name</label>

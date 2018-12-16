@@ -1,9 +1,12 @@
-<?php
-include 'config.php';
-session_start();
-if(!isset($_SESSION['username'])){
-header('location: login.php'); 
-}
+
+<?php 
+  include 'config.php';
+  session_start(); 
+
+  if (!isset($_SESSION['username'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: login.php');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,9 +142,26 @@ header('location: login.php');
                     </div>
                 </div>
             </header>
+
+         
                         <!-- MAIN CONTENT-->
                         <div class="main-content">
                             <div class="section__content section__content--p30">
+                            <?php if (isset($_SESSION['success'])) : ?>
+      <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+      	<h4>
+          <?php 
+          	echo $_SESSION['success']; 
+          	unset($_SESSION['success']);
+          ?>
+      	</h4>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+      </div>
+  	<?php endif ?>
+
+      
                           
                                     </div>
                                 </div>
