@@ -17,7 +17,7 @@ header('location: login.php');
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Admin</title>
+    <title>Client</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -53,7 +53,7 @@ header('location: login.php');
 
 <!-- WEBLAB LOGO -->
     <div class="logo">
-          <h4> DASHBOARD</h4>
+          <h4> Welcome Customer!</h4>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
@@ -63,7 +63,7 @@ header('location: login.php');
                         <i class="fas fa-chart-bar"></i>Services</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                          <li>
-                            <a href="View.php">View Equipments</a>
+                            <a href="View.php">View Flower</a>
                         </li>
                         <li>
                             <a href="Add.php">Post Equipments</a>
