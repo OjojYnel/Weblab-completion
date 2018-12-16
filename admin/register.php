@@ -1,11 +1,9 @@
 <?php
-  session_start();
-  require_once('config.php');
+include 'config.php';
 ?>
 <?php
 include 'registration.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +16,7 @@ include 'registration.php';
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Login</title>
+    <title>Register</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -62,35 +60,7 @@ include 'registration.php';
 }
 </style>
 
- <?php
 
-if (isset($_POST['login_user'])) {
-    @$username = mysqli_real_escape_string($con, $_POST['username']);
-    @$password = mysqli_real_escape_string($con, $_POST['password']);
-  
-    if (empty($username)) {
-        array_push($errors, "Username is required");
-    }
-    if (empty($password)) {
-        array_push($errors, "Password is required");
-    }
-  
-    if (count($errors) == 0) {
-        $password = md5($password);
-        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-        $results = mysqli_query($con, $query);
-        if (mysqli_num_rows($results) == 1) {
-          $_SESSION['username'] = $username;
-          $_SESSION['success'] = "You are now logged in";
-          header('location: index.php');
-        }else {
-            array_push($errors, "Wrong username/password combination");
-        }
-    }
-  }
-  
-
- ?>
 <body class="animsition">
     <div class="page-wrapper">
         <div class="page-content--bge5">
@@ -103,19 +73,36 @@ if (isset($_POST['login_user'])) {
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="registration.php" method="post">
                             <?php include('errors.php'); ?>
+                            <div class="form-group">
+                                    <label>First Name</label>
+                                    <input class="au-input au-input--full" type="text" name="first_name" placeholder="First Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input class="au-input au-input--full" type="text" name="last_name" placeholder="Last Name">
+                                </div>
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    <input class="au-input au-input--full" type="password" name="password_1" placeholder="Password">
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" name="login_user" value="Login" >Login as Client</button>
-                            
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input class="au-input au-input--full" type="password" name="password_2" placeholder="Password">
+                                </div>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" name="reg_user" type="submit">register</button>
                             </form>
+                            <div class="register-link">
+                                <p>
+                                    Already have account?
+                                    <a href="login.php">Sign In</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
