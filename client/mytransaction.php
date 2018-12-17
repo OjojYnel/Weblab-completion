@@ -6,7 +6,6 @@ header('location: login.php');
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +95,7 @@ header('location: login.php');
 
           <!-- PAGE CONTAINER-->
           <div class="page-container">
-             <!-- HEADER DESKTOP-->
+          <!-- HEADER DESKTOP-->
         <header class="header-desktop">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
@@ -140,19 +139,18 @@ header('location: login.php');
                     </div>
                 </div>
             </header>
-
+         
             <!-- MAIN CONTENT-->
-            <form method="post">
             <div class="main-content">
               <div class="section__content section__content--p30">
                 <div class="container-fluid">
                 <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35"> Pending Transactions</h3>
+                                <h3 class="title-5 m-b-35"> Completed Transactions</h3>
                                 <div class="table-responsive table-responsive-data2">
                                     <table class="table table-data2">
                                         <thead>
-                                            <tr>
+                                        <tr>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
                                                 <th>Date Returned</th>
@@ -173,7 +171,7 @@ header('location: login.php');
                                                                 }
                                                                 $calc = $perpage * $page;
                                                                 $start = $calc - $perpage;
-                                                                $sql = "SELECT transaction_id, start_date,end_date,date_returned,quantity_rented,status,equipment_name,equipment_price FROM transaction join equipment on transaction.equipment_id=equipment.equipment_id where status = 'pending'";
+                                                                $sql = "SELECT transaction_id, start_date,end_date,date_returned,status,equipment_name,equipment_price,quantity_rented FROM transaction join equipment on transaction.equipment_id=equipment.equipment_id where status = 'completed'";
                                                                 $result = mysqli_query($con,$sql);
                                                                 
                                                                 $rows = mysqli_num_rows($result);
@@ -188,16 +186,11 @@ header('location: login.php');
                                                                         <td>'.$row["equipment_name"].'</td>
                                                                         <td>'.$row["equipment_price"].'</td>
                                                                         <td>'.$row["quantity_rented"].'</td>
-                                                                        <td>'.$row["status"].'</td>
-                                                                        <td>'.'<a href=\'acceptp-transaction.php?accept_id=' .$row['transaction_id'].'\'><span class="status--accept">Accept</span></a>'.'</td>
-                                                                        <td>'.'<a href=\'denyp-transaction.php?deny_id=' .$row['transaction_id'].'\'><span class="status--denied">Deny</span></a>'.'</td>
+                                                                        <td>'.'<span class="status--process">' .$row["status"].'</td>
                                                                         </tr>
+
+
                                                                         ';
-                                                                        
-                                
-
-
-                                                      
                                                                     }
                                                                 }
                                                                 ?>
@@ -206,7 +199,6 @@ header('location: login.php');
                                                         
                                     </table>
                                 </div>
-                                </form>
                                 <!-- END DATA TABLE -->
                             </div>
                 </div>

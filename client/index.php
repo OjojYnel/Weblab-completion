@@ -69,7 +69,7 @@
                             <a href="View.php">View Flower</a>
                         </li>
                         <li>
-                            <a href="Add.php">Post Equipments</a>
+                            <a href="Add.php">Post Flower</a>
                         </li>
                     </ul>
                 </li>               
@@ -79,16 +79,10 @@
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                  <li>
                                     <a href="ctransaction.php">Completed Transactions</a>
-                                </li>
+                                </li>     
                                 <li>
-                                    <a href="otransaction.php">Ongoing Transactions</a>
-                                </li>
-                                <li>
-                                    <a href="ptransaction.php">Pending Transactions</a>
-                                </li>
-                                <li>
-                                    <a href="dtransaction.php">Denied Transactions</a>
-                                </li>
+                                    <a href="mytransaction.php">See My Transactions</a>
+                                </li> 
                     </ul>
                     </li>   
                         </ul>
