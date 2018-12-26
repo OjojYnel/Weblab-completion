@@ -1,6 +1,6 @@
 <%-- 
-    Document   : transactionMonitoring
-    Created on : 26-Dec-2018, 15:27:42
+    Document   : denied
+    Created on : 26-Dec-2018, 17:05:13
     Author     : Peralta, Melvin
 --%>
 
@@ -39,9 +39,9 @@
             String query = request.getParameter("Search");
             String data; 
             if(query!=null){
-                data = "SELECT transactionId, status, flower FROM transaction where transactionId like '%"+query+"%' or status like '%"+query+"%' or flower like '%"+query+"%'";
+                data = "SELECT transactionId, status, flower FROM transaction where status = 'denied' AND (transactionId like '%"+query+"%' or flower like '%"+query+"%')";
             }else{
-                data = "SELECT transactionId, status, flower FROM transaction";
+                data = "SELECT transactionId, status, flower FROM transaction where status = 'denied'";
             }
             
             res = stat.executeQuery(data); 
@@ -51,14 +51,11 @@
                     <td><%=res.getString("transactionId")%></td>
                     <td><%=res.getString("status")%></td>
                     <td><%=res.getString("flower")%></td>
-                    <td>
-                        <a href='Accept.jsp?u=<%=res.getString("transactionId")%>'>Accept</a>
-			<a href='Deny.jsp?Id=<%=res.getString("transactionId")%>'>Deny</a>
-                        <a href='Complete.jsp?tId=<%=res.getString("transactionId")%>'>Complete</a>
-                    </td>
                 </tr>
                 <%}
 %>
         </table>
     </body>
 </html>
+
+
