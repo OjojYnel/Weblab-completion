@@ -97,7 +97,12 @@ if (isset($_POST['login_user'])) {
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" name="login_user" value="Login" >Login as Client</button>
-                            
+                                <div class="register-link">
+                                <p>
+                                    Don't have an account?
+                                    <a href="register.php">Register Here</a>
+                                </p>
+                            </div>
                             </form>
                         </div>
                     </div>
