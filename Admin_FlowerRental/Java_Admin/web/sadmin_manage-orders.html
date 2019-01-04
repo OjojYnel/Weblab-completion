@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/main.css"/>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/js/uikit-icons.min.js"></script>
+	<title> Super Admin: Manage Orders </title>
+
+</head>
+<body>
+  <div class="uk-conatiner uk-conatiner-expand">  
+	<div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky bg-blue uk-light; uk-light; top: 200">
+      <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+              <a href="sadmin_home.html">Home</a>
+            </li>
+            <li class="uk-active">
+              <a class="isDisabled">Manage Orders</a>
+            </li>
+            <li>
+              <a href="#">Manage Products</a>
+              <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                      <li><a href="sadmin_add-product.html">Add product</a></li>
+                      <li><a href="sadmin_update-product.html">Update/Delete product</a></li>
+                  </ul>
+              </div>
+            </li>
+            <li>
+              <a href="#">Accounts</a>
+              <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-nav-header">User Management</li>
+                        <li><a href="sadmin_add-user.html">Add User Account</a></li>
+                        <li><a href="sadmin_manage-users.html">Enable/Disable User Account</a></li>
+                    </ul>
+                </div>
+            </li>
+          </ul>
+
+        </div>
+        <div class="uk-navbar-right">
+	        <ul class="uk-navbar-nav">
+				<li>
+					<form method="post" action="LogoutServlet">
+            <a>Logout</a>
+          </form>
+				</li>
+			</ul>
+		</div>
+      </nav>
+    </div>
+</div>
+    <div class="uk-container">
+      <div class="uk-section">
+        <h1 style="text-align: center;"> Client Orders </h1>
+      </div>
+    </div>
+
+<div class="uk-container">
+    <table class="uk-table uk-table-justify uk-table-divider">
+      <thead>
+        <tr>
+            <th>Name of Client</th>
+            <th>Ordered Product</th>
+            <th>Order Status</th>
+            <th class="uk-width-medium">Action</th>
+        </tr>
+        </thead>
+      <tbody>
+        <tr>
+            <td>Table Data</td>
+            <td>Chrysanthemum</td>
+            <td>Pending</td>
+            <td>
+              <button class="uk-button uk-button-default" type="button" uk-toggle="target: #modal-example">Order Info</button>
+              <button class="uk-button uk-button-primary" type="button" id="user_info">Update</button>
+                <div uk-dropdown="mode: click">
+                  <ul class="uk-nav uk-dropdown-nav">
+                    <li><a> Accept Order </a></li>
+                    <li><a> Reject </a></li>
+                  </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Table Data</td>
+            <td>Lavender</td>
+            <td>Pending</td>
+            <td>
+              <button class="uk-button uk-button-default" type="button" uk-toggle="target: #modal-example">Order Info</button>
+              <button class="uk-button uk-button-primary" type="button">Update</button>
+              <div uk-dropdown="mode: click">
+                <ul class="uk-nav uk-dropdown-nav">
+                  <li><a> Accept Order </a></li>
+                  <li><a> Reject </a></li>
+                </ul>
+              </div>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+       <div class="uk-card uk-card-default uk-card-body">
+          <div class="uk-card-badge uk-label">Pending</div>
+          <h3 class="uk-card-title">Client Name</h3>
+          <p>Address</p>
+            <li> </li>
+          <p>Date of Purchase</p>
+            <li> </li>
+      </div>
+    </div>
+</div>
+  </div>
+</body>
+</html>

@@ -4,34 +4,46 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/main.css"/>
+
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/css/uikit.min.css" />
 
     <!-- UIkit JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/js/uikit-icons.min.js"></script>
-	<title> Super Admin: Home Page </title>
+	<title> Admin: Home Page </title>
 
 </head>
 <body>
+  <div class="uk-conatiner uk-conatiner-expand">  
 	<div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky bg-blue uk-light; uk-light; top: 200">
       <nav class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-left">
           <ul class="uk-navbar-nav">
             <li class="uk-active">
-              <a href="index.php">Home</a>
+              <a class="isDisabled">Home</a>
             </li>
             <li>
-              <a href="quiz.php">Manage Orders</a>
+              <a href="admin_manage-orders.html">Manage Orders</a>
+              
             </li>
             <li>
-              <a href="about.php">Accounts</a>
+              <a>Manage Products</a>
+              <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                      <li><a href="admin_add-product.html">Add product</a></li>
+                      <li><a href="admin_update-product.html">Update/Delete product</a></li>
+                  </ul>
+              </div>
+            </li>
+            <li>
+              <a>Accounts</a>
               <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li class="uk-nav-header">User Management</li>
-                        <li><a href="#">Add a User Account</a></li>
-                        <li><a href="#">Disable a User Account</a></li>
-                        <li class="uk-nav-divider"></li>
+                        <li><a href="admin_add-user.html">Add User Account</a></li>
                     </ul>
                 </div>
             </li>
@@ -39,16 +51,25 @@
 
         </div>
         <div class="uk-navbar-right">
-
-          <ul class="uk-navbar-nav">
-                  <li>
-                    <a href="#modal-login" uk-toggle>Logout</a>
-                  </li>
-          </ul>
-        </div>
-
+	        <ul class="uk-navbar-nav">
+				<li>
+					<form method="post" action="LogoutServlet">
+            <a>Logout</a>
+          </form>
+				</li>
+			</ul>
+		</div>
       </nav>
     </div>
+</div>
+    <div class="uk-container">
+      <div class="uk-section">
+        <h1 style="text-align: center;"> Admin Dashboard </h1>
+      </div>
+    </div>
+      
+    
+
 
 </body>
 </html>

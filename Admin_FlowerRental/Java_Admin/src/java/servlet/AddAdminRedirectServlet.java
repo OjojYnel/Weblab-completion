@@ -7,12 +7,6 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,11 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- */
-@WebServlet(name = "AProfileServlet", urlPatterns = {"/AProfileServlet"})
-public class AProfileServlet extends HttpServlet {
+@WebServlet(name = "AddAdminRedirectServlet", urlPatterns = {"/AddAdminRedirectServlet"})
+public class AddAdminRedirectServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,37 +28,18 @@ public class AProfileServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
         response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
         response.setDateHeader("Expires", 0); // Proxies.
+        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
         if(session == null){
             response.sendRedirect("index.html");
         }else{
-            try (PrintWriter out = response.getWriter()) {
-                response.setContentType("text/html;charset=UTF-8");
-                String username = session.getAttribute("username").toString();
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pagefragments/Aprofileheader.html");
-                rd.include(request, response);
-                ConnectDB db = new ConnectDB();
-                Connection conn = db.getConn();
-                //String stmt1 = "select username, email from users where username='"+username+"';";
-                //String stmt2 = "select * from users where username = '"+username+"';";
-                //PreparedStatement ps1 = conn.prepareStatement(stmt1);
-                //PreparedStatement ps2 = conn.prepareStatement(stmt2);
-                ResultSet rs1 = ps1.executeQuery();
-                ResultSet rs2 = ps2.executeQuery();
-                while(rs1.next()){
-                    out.println("<h3>Username:&nbsp;&nbsp;&nbsp;"+rs1.getString("username")+"</h3>");
-                    out.println("<h3>Email:&nbsp;&nbsp;&nbsp;"+rs1.getString("email")+"</h3>");
-                }
-                while(rs2.next()){
-                    out.println("<h3>Admin Name:&nbsp;&nbsp;&nbsp;"+rs2.getString("admin_name")+"</h3>");
-                    out.println("<h3>Contact:&nbsp;&nbsp;&nbsp;"+rs2.getString("admin_contact")+"</h3>");
-                }
-
-               //
+        try (PrintWriter out = response.getWriter()) {
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pagefragments/adduser.html");
+            rd.include(request, response);
         }
         }
     }
@@ -84,11 +56,7 @@ public class AProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(AProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -102,11 +70,7 @@ public class AProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(AProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

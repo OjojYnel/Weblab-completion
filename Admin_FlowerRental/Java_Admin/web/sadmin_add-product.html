@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/main.css"/>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/js/uikit-icons.min.js"></script>
+	<title> Admin: Product Management </title>
+
+</head>
+<body>
+  <div class="uk-conatiner uk-conatiner-expand">  
+  <div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky bg-blue uk-light; uk-light; top: 200">
+      <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+              <a href="sadmin_home.html">Home</a>
+            </li>
+            <li class="uk-active">
+              <a href="sadmin_manage-orders.html">Manage Orders</a>
+            </li>
+            <li>
+              <a href="#">Manage Products</a>
+              <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                      <li><a class="isDisabled">Add product</a></li>
+                      <li><a href="sadmin_update-product.html">Update/Delete product</a></li>
+                  </ul>
+              </div>
+            </li>
+            <li>
+              <a href="#">Accounts</a>
+              <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-nav-header">User Management</li>
+                        <li><a href="sadmin_add-user.html">Add User Account</a></li>
+                        <li><a href="sadmin_manage-users.html">Enable/Disable User Account</a></li>
+                    </ul>
+                </div>
+            </li>
+          </ul>
+
+        </div>
+        <div class="uk-navbar-right">
+          <ul class="uk-navbar-nav">
+        <li>
+          <form method="post" action="LogoutServlet">
+            <a>Logout</a>
+          </form>
+        </li>
+      </ul>
+    </div>
+      </nav>
+  </div>
+  </div>
+
+<hr class="uk-divider-icon">
+<div class="uk-container">
+    <h1 style="text-align: center;"> Add Product </h1>
+</div>
+<div class="uk-container">
+    <form class="uk-grid-small" uk-grid>
+        <div class="uk-width-1-4@s">
+            <label class="uk-form-label" for="form-horizontal-text">Flower</label>
+            <input class="uk-input" type="text" placeholder="Name of flower">
+        </div>
+        <div class="uk-width-1-4@s">
+            <label class="uk-form-label" for="form-horizontal-text">Category</label>
+            <select class="uk-select">
+                <option value="Alstromeria">Alstromeria</option>
+                <option value="Asters">Asters</option>
+                <option value="Bouquets">Bouquets</option>
+                <option value="Carnations">Carnations</option>
+                <option value="Chrysanthemum">Chrysanthemum</option>
+                <option value="Exotic">Exotic Blooms</option>
+                <option value="Foliage">Foliage</option>
+                <option value="Flowers">Flowers and Fillers</option>
+                <option value="Gladiolas">Gladiolas</option>
+                <option value="Greens">Greens and Branches</option>
+                <option value="Gypsophilia">Gypsophilia</option>
+                <option value="Lilies">Lilies</option>
+                <option value="Limonium">Limonium</option>
+                <option value="Orchids">Orchids</option>
+                <option value="Preserved">Preserved and Dried</option>
+                <option value="Roses">Roses</option>
+            </select>
+        </div>
+        <div class="uk-width-1-4@s">
+            <label class="uk-form-label" for="form-horizontal-text">Price</label>
+            <input class="uk-input" type="number" placeholder="P0.00">
+        </div>
+        <div class="uk-width-1-4@s">
+            <label class="uk-form-label" for="form-horizontal-text">Rental Duration</label>
+            <input class="uk-input" type="number" placeholder="No. of Days">
+        </div>
+        <div class="uk-width-1-2@s">
+          <label class="uk-form-label" for="form-horizontal-text">Product Description</label>  
+          <textarea class="uk-textarea" rows="5" placeholder="Provide a short description here..."></textarea>
+        </div>
+        <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-horizontal-text">Upload Image</label>
+            <input type="file">
+            <hr>
+            <button class="uk-button uk-button-primary uk-button-large">Add Flower Product</button>
+        </div>
+    </form>
+</div>
+<hr class="uk-divider-icon">
+</body>
+</html>

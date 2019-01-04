@@ -7,40 +7,53 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "PopUpErrorLogin", urlPatterns = {"/PopUpErrorLogin"})
-public class PopUpErrorLogin extends HttpServlet {
+@WebServlet(name = "SAAcceptAccountServlet", urlPatterns = {"/SAAcceptAccountServlet"})
+public class SAAcceptAccountServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PopUpErrorLogin</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PopUpErrorLogin at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            ConnectDB db = new ConnectDB();
+            Connection conn = db.getConn();
+            String cID = request.getParameter("hiddenid");
+            String value = request.getParameter("accept");
+            String value1 = request.getParameter("reject");
+            if("accept".equals(value)){
+                String sql1 = "UPDATE webtechlab.accounts SET account_status='active' WHERE account_id='"+ cID + "';";
+                PreparedStatement ps = conn.prepareStatement(sql1);
+                ps.executeUpdate();
+                response.sendRedirect("SendEmailServlet");
+                //RequestDispatcher rd = request.getRequestDispatcher("SendEmailServlet");
+                //rd.include(request, response);
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('THE USER HAS BEEN ACCEPTED.');");
+                out.println("</script>");
+            }else if("reject".equals(value1)){
+                String sql1 = "UPDATE tenterent.accounts SET status='r' WHERE account_id='"+ cID + "';";
+                PreparedStatement ps = conn.prepareStatement(sql1);
+                ps.executeUpdate();
+                RequestDispatcher rd = request.getRequestDispatcher("SAhome.html");
+                rd.include(request, response);
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('THE USER HAS BEEN REJECTED.');");
+                out.println("</script>");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SAAcceptAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
