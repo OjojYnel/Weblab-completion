@@ -59,7 +59,7 @@ if (count($errors) == 0) {
 
     $newpassword = md5($newpassword);
 
-    $query = "UPDATE users SET password = '$newpassword' where username='$user'";
+    $query = "UPDATE clients SET client_password = '$newpassword' where client_username='$user'";
 
 
     $result = mysqli_query($con, $query);

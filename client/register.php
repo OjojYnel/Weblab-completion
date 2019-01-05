@@ -63,6 +63,12 @@ include 'registration.php';
                                     <label>Last Name</label>
                                     <input class="au-input au-input--full" type="text" name="last_name" placeholder="Last Name">
                                 </div>
+                                
+                                <div class="form-group">
+                                    <label>Contact number</label>
+                                    <input class="au-input au-input--full" type="text" name="contact_number" placeholder="Contact Number">
+                                </div>
+
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
