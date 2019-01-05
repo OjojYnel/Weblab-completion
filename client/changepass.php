@@ -157,11 +157,6 @@ include 'changepass-action.php';
                                         <form action="" method="post">
                             <?php include('errors.php'); ?>
 
-                                            
-                                            <div class="form-group">
-                                                <label for="nf-password" class=" form-control-label">Current Password</label>
-                                                <input type="password" name="currentpassword" placeholder="Enter Old Password.." class="form-control">
-                                            </div>
                                             <div class="form-group">
                                                 <label for="nf-password" class=" form-control-label">New Password</label>
                                                 <input type="password" name="newpassword" placeholder="Enter New Password.." class="form-control">

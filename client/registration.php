@@ -34,6 +34,16 @@ if (isset($_POST['reg_user'])) {
   if (empty($password_1)) { 
       array_push($errors, "Password is required"); 
     }
+
+    if (strlen($password_1) <='8') { 
+      array_push($errors, "Your Password Must Contain At Least 8 Characters!"); 
+    }
+
+    elseif(!preg_match("#[0-9]+#",$password_1)) {
+      array_push($errors, "Your Password Must Contain At Least 1 Number!");
+  }
+
+
   if ($password_1 != $password_2) {
     array_push($errors, "The two passwords do not match");
   }
