@@ -8,6 +8,9 @@
   	header('location: login.php');
   }
 ?>
+<?php
+include 'changepass-action.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +23,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Client</title>
+    <title>Change Password</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -124,7 +127,7 @@
                                             </div>
                                             <div class="account-dropdown__body">
                                             <div class="account-dropdown__footer">
-                                            <a href="changepass.php">
+                                            <a href="#">
                                                         <i class="zmdi zmdi-account"></i>Account</a>
                                             <div class="account-dropdown__body">
                                             <div class="account-dropdown__footer">
@@ -145,6 +148,38 @@
          
                         <!-- MAIN CONTENT-->
                         <div class="main-content">
+
+                        <div class="card">
+                                    <div class="card-header">
+                                        <strong>Change Password</strong>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <form action="" method="post">
+                            <?php include('errors.php'); ?>
+
+                                            
+                                            <div class="form-group">
+                                                <label for="nf-password" class=" form-control-label">Current Password</label>
+                                                <input type="password" name="currentpassword" placeholder="Enter Old Password.." class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nf-password" class=" form-control-label">New Password</label>
+                                                <input type="password" name="newpassword" placeholder="Enter New Password.." class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nf-password" class=" form-control-label">Confirm New Password</label>
+                                                <input type="password"  name="confirmpassword" placeholder="Enter New Password.." class="form-control">
+                                            </div>
+                                            <button type="submit" name="change_pass" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                
+                                       
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+                                </form>
                             <div class="section__content section__content--p30">
                             <?php if (isset($_SESSION['success'])) : ?>
       <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
@@ -171,6 +206,8 @@
                         <!--Main Content -->
                          <div class="row">
                         <div class="col-md-12">
+
+                        
                             <div class="copyright">
                                 <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
                             </div>
