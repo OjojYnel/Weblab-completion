@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2019 at 11:09 AM
+-- Generation Time: Jan 05, 2019 at 06:23 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -83,9 +83,17 @@ CREATE TABLE `clients` (
   `client_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `client_contact_number` int(11) NOT NULL,
   `client_create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `account_status` enum('Pending','Accepted','Denied','Disabled') COLLATE utf8_unicode_ci NOT NULL,
-  `account_role` enum('Admin','Client') COLLATE utf8_unicode_ci NOT NULL
+  `account_status` enum('Pending','Accepted','Denied','Disabled') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Pending',
+  `account_role` enum('Admin','Client') COLLATE utf8_unicode_ci DEFAULT 'Client'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`client_id`, `client_username`, `client_firstname`, `client_lastname`, `client_password`, `client_contact_number`, `client_create_date`, `account_status`, `account_role`) VALUES
+(1, 'Assistant', 'Ojoj', 'Nel', 'dfe43d4450dbcb11c1e9882fe076c0a0', 1234567891, '2019-01-06 01:22:45', 'Accepted', 'Client'),
+(2, 'Doctor', 'Ynel', 'Dela Cruz', '6797f82f504379e72c59879b12594d39', 2147483647, '2019-01-06 01:22:31', 'Pending', 'Client');
 
 -- --------------------------------------------------------
 
@@ -134,29 +142,6 @@ CREATE TABLE `rentals` (
   `amount_payable` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(32) NOT NULL,
-  `first_name` varchar(45) NOT NULL,
-  `last_name` varchar(45) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `status` enum('Activate','Deactivate','Pending') DEFAULT 'Pending',
-  `role` enum('client','admin') DEFAULT 'client'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `username`, `first_name`, `last_name`, `password`, `status`, `role`) VALUES
-(1, 'Nelgamer', 'Ojoj Ynel', 'Dela Cruz', '482c811da5d5b4bc6d497ffa98491e38', 'Pending', 'client');
-
 --
 -- Indexes for dumped tables
 --
@@ -202,12 +187,6 @@ ALTER TABLE `rentals`
   ADD KEY `flower_id` (`flower_id`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -227,7 +206,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `flowers`
@@ -246,12 +225,6 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `rentals`
   MODIFY `rental_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
