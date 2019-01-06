@@ -66,7 +66,7 @@ include 'registration.php';
                                 
                                 <div class="form-group">
                                     <label>Contact number</label>
-                                    <input class="au-input au-input--full" type="text" name="contact_number" placeholder="Contact Number">
+                                    <input class="au-input au-input--full" type="text" name="contact_number" placeholder="Contact Number" value="63">
                                 </div>
 
                                 <div class="form-group">

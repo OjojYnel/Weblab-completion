@@ -6,9 +6,6 @@ header('location: login.php');
 }
 ?>
 
-<?php
-include 'add-equipment-action.php'; 
-?>
 
 
 
@@ -66,10 +63,10 @@ include 'add-equipment-action.php';
             <ul class="list-unstyled navbar__list">
                 <li>
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-chart-bar"></i>Services</a>
+                        <i class="fas fa-table"></i>Flowers</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                          <li>
-                            <a href="View.php">View Equipments</a>
+                            <a href="View.php">View Flowers</a>
                         </li>
                         <li>
                             <a href="Add.php">Post Equipments</a>
@@ -78,23 +75,39 @@ include 'add-equipment-action.php';
                 </li>               
                 <li>
                 <a class="js-arrow" href="#">                         
-                        <i class="fas fa-table"></i>Transactions</a>
-                                <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                 <li>
-                                    <a href="ctransaction.php">Completed Transactions</a>
-                                </li>
-                                <li>
-                                    <a href="otransaction.php">Ongoing Transactions</a>
-                                </li>
-                                <li>
-                                    <a href="ptransaction.php">Pending Transactions</a>
-                                </li>
-                                <li>
-                                    <a href="dtransaction.php">Denied Transactions</a>
-                                </li>
-                    </ul>
-                    </li>   
+                        <i class="fas fa-copy"></i>Categories</a>
+                        <ul class ="list-unstyled navbar__sub-list js-sub-list">
+                        <?php
+                                                                $sql = "SELECT category from categories";
+                                                                $result = mysqli_query($con,$sql);
+                                                                $rows = mysqli_num_rows($result);
+                                                                if($rows){
+                                                                    $i = 0;
+                                                                    while($row = mysqli_fetch_array($result)){
+                                                                        echo '
+                                                                        <li>
+                                                                            <a href="">'.$row["category"].'
+                                                                        </li>
+                                                                        ';
+                                                                    }
+                                                                }
+                                                                ?>
                         </ul>
+                    </li>
+                    <li>
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-chart-bar"></i>Transactions</a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                         <li>
+                            <a href="View.php">View My Transactions</a>
+                        </li>
+                        <li>
+                            <a href="Add.php">Post Equipments</a>
+                        </li>
+                    </ul>
+                </li>  
+                        </ul>
+                
                     </nav>
                 </div>
             </aside>
@@ -107,6 +120,12 @@ include 'add-equipment-action.php';
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
+                        <form class="form-header" action="" method="POST">
+                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports...">
+                                <button class="au-btn--submit" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button>
+                            </form>
                             <form>
                             <iframe src="http://free.timeanddate.com/clock/i6cof2h4/n145/fn8/fs20/ftb/pa10/tt0/tm1/td1/th2/tb1" frameborder="0" width="453" height="43"></iframe>
                             </form>
@@ -159,15 +178,14 @@ include 'add-equipment-action.php';
                                     <table class="table table-data2">
                                         <thead>
                                             <tr>
-                                                <th>Code</th>
                                                 <th>Name</th>
                                                 <th>Description</th>
                                                 <th>Category</th>
-                                                <th>Equipment Quantity</th>
-                                                <th>Available Quantity</th>
+                                                <th>Duration</th>
+                                                <th>Date Available</th>
                                                 <th>Price</th>
-                                                <th>Added Date</th>
-                                                <th>Modify</th>
+                                                <th>Status</th>
+                                                <th>Edit Photo</th>
                                                 <th>Image</th>
                                             </tr>
                                         </thead>
@@ -181,7 +199,7 @@ include 'add-equipment-action.php';
                                                                 }
                                                                 $calc = $perpage * $page;
                                                                 $start = $calc - $perpage;
-                                                                $sql = "SELECT equipment.equipment_id, equipment_code, equipment_desc, equipment_name, category, equipment_quantity, equipment_pic, quantity_rented, equipment_price, added_date FROM equipment left Join transaction on equipment.equipment_id=transaction.equipment_id";
+                                                                $sql = "SELECT flower_id, flowers.category_id,categories.category, name, description, duration, price, date_availability, status, product_image FROM flowers left Join categories on flowers.category_id=categories.category_id";
                                                                 $result = mysqli_query($con,$sql);
                                                                 $rows = mysqli_num_rows($result);
                                                                 if($rows){
@@ -189,16 +207,15 @@ include 'add-equipment-action.php';
                                                                     while($row = mysqli_fetch_array($result)){
                                                                         echo '
                                                                         <tr>
-                                                                        <td>'.$row["equipment_code"].'</td>
-                                                                        <td>'.$row["equipment_name"].'</td>
-                                                                        <td>'.$row["equipment_desc"].'</td>
+                                                                        <td>'.$row["name"].'</td>
+                                                                        <td>'.$row["description"].'</td>
                                                                         <td>'.$row["category"].'</td>
-                                                                        <td>'.$row["equipment_quantity"].'</td>
-                                                                        <td>'.($row["equipment_quantity"]-$row["quantity_rented"]).'</td>
-                                                                        <td>'.$row["equipment_price"].'</td>
-                                                                        <td>'.$row["added_date"].'</td>
-                                                                        <td>'.'<a href=\'edit-equipment.php?edit_id=' .$row['equipment_id'].'\'>View and Edit</a>'.'</td>
-                                                                        <td>'.'<img src=\'../stored/' .$row['equipment_pic'].'\'>'.'</td>
+                                                                        <td>'.$row["duration"].'</td>
+                                                                        <td>'.$row["date_availability"].'</td>
+                                                                        <td>'.$row["price"].'</td>
+                                                                        <td>'.$row["status"].'</td>
+                                                                        <td>'.'<a href=\'edit-flowers.php?edit_id=' .$row['flower_id'].'\'>View and Edit</a>'.'</td>
+                                                                        <td>'.'<img src=\'../stored/' .$row['product_image'].'\'>'.'</td>
 
                                                                         </tr>
                                                                         ';

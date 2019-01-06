@@ -63,13 +63,10 @@
             <ul class="list-unstyled navbar__list">
                 <li>
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-chart-bar"></i>Services</a>
+                        <i class="fas fa-chart-bar"></i>Avail Services</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                          <li>
-                            <a href="View.php">View Flower</a>
-                        </li>
-                        <li>
-                            <a href="Add.php">Post Flower</a>
+                            <a href="View.php">View Services</a>
                         </li>
                     </ul>
                 </li>               

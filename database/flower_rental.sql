@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2019 at 06:23 PM
+-- Generation Time: Jan 06, 2019 at 09:20 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -77,23 +77,25 @@ INSERT INTO `categories` (`category_id`, `category`) VALUES
 
 CREATE TABLE `clients` (
   `client_id` int(11) NOT NULL,
-  `client_username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `client_username` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `client_firstname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `client_lastname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `client_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `client_contact_number` int(11) NOT NULL,
+  `client_password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `client_contact_number` bigint(20) NOT NULL,
   `client_create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `account_status` enum('Pending','Accepted','Denied','Disabled') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Pending',
-  `account_role` enum('Admin','Client') COLLATE utf8_unicode_ci DEFAULT 'Client'
+  `account_status` enum('Pending','Accepted','Denied','Disabled') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`client_id`, `client_username`, `client_firstname`, `client_lastname`, `client_password`, `client_contact_number`, `client_create_date`, `account_status`, `account_role`) VALUES
-(1, 'Assistant', 'Ojoj', 'Nel', 'dfe43d4450dbcb11c1e9882fe076c0a0', 1234567891, '2019-01-06 01:22:45', 'Accepted', 'Client'),
-(2, 'Doctor', 'Ynel', 'Dela Cruz', '6797f82f504379e72c59879b12594d39', 2147483647, '2019-01-06 01:22:31', 'Pending', 'Client');
+INSERT INTO `clients` (`client_id`, `client_username`, `client_firstname`, `client_lastname`, `client_password`, `client_contact_number`, `client_create_date`, `account_status`) VALUES
+(1, 'TheRen', 'renedez ', 'mendoza', '365d38c60c4e98ca5ca6dbc02d396e53', 9274062475, '2019-01-06 14:10:56', 'Pending'),
+(2, 'taguro', 'taguro', 'master', 'a28259cf671039a42db28c06d8f16edc', 639274062475, '2019-01-06 14:14:43', 'Pending'),
+(3, 'Samusa', 'Alis', 'Shawarma', '4552d4c5ded57351d713575420f77fe7', 639274062475, '2019-01-06 14:18:59', 'Accepted'),
+(4, 'Doctor', 'warrior', 'orc', 'c8b0fc4822f8cfd9167bacffe312b96d', 63912763219, '2019-01-06 14:20:29', 'Pending'),
+(5, 'sdwdwadadwadadawdwdadawdawgwadkw', 'nel', 'dela cruz', '81bf567471ec7257adf588aee88793f0', 639245671892, '2019-01-06 15:08:36', 'Accepted');
 
 -- --------------------------------------------------------
 
@@ -108,10 +110,17 @@ CREATE TABLE `flowers` (
   `description` longtext COLLATE utf8_unicode_ci NOT NULL,
   `price` double NOT NULL,
   `duration` int(11) NOT NULL,
-  `date_availability` datetime NOT NULL,
+  `date_availability` date NOT NULL,
   `status` enum('Available','Temporarily Unavailable','Rented','Permanently Unavailable') COLLATE utf8_unicode_ci NOT NULL,
   `product_image` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `flowers`
+--
+
+INSERT INTO `flowers` (`flower_id`, `category_id`, `name`, `description`, `price`, `duration`, `date_availability`, `status`, `product_image`) VALUES
+(1, 1, 'Inca Lucky', 'A white Alstromeria flower good for the garden, repels mosquitoes', 55300, 5, '2019-01-09', 'Available', 0x30);
 
 -- --------------------------------------------------------
 
@@ -136,8 +145,8 @@ CREATE TABLE `rentals` (
   `rental_id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
   `flower_id` int(11) NOT NULL,
-  `rental_date` datetime NOT NULL,
-  `return_date` datetime NOT NULL,
+  `rental_date` date NOT NULL,
+  `return_date` date NOT NULL,
   `status` enum('Pending','Accepted','Renting','Finished','Cancelled') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Pending',
   `amount_payable` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -206,13 +215,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `flowers`
 --
 ALTER TABLE `flowers`
-  MODIFY `flower_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `flower_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payments`

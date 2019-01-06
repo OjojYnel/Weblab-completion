@@ -26,7 +26,7 @@ if (isset($_POST['reg_user'])) {
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) { 
       array_push($errors, "Username is required"); 
-}
+} 
   if (empty($firstname)) { 
       array_push($errors, "First Name is required"); 
 }
@@ -37,11 +37,19 @@ if (isset($_POST['reg_user'])) {
       array_push($errors, "Password is required"); 
     }
 
+    if (strlen($username) >='33') { 
+      array_push($errors, "Your Username has exceeded 32 Characters!"); 
+    }
+
+    if (strlen($password_1) >='33') { 
+      array_push($errors, "Your Password has exceeded 32 Characters!"); 
+    }
+
     if (empty($contactnumber)) { 
       array_push($errors, "Contact Number is required"); 
     }
 
-    if (strlen($contactnumber) <='10') { 
+    if (strlen($contactnumber) <='9') { 
       array_push($errors, "Contact Number Must Contain At Least 10 Numbers!"); 
 
     } elseif(!preg_match("/^[1-9][0-9]*$/",$contactnumber)) {
