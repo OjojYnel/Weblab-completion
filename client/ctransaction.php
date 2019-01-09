@@ -49,23 +49,18 @@ header('location: login.php');
    <aside class="menu-sidebar d-none d-lg-block">
 
 <!-- WEBLAB LOGO -->
-    <div class="logo">
-        <a href="index.php">
-        <h4>DASHBOARD</h4>
-        </a>
+<div class="logo">
+          <h4> Welcome Customer!</h4>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
                 <li>
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-chart-bar"></i>Services</a>
+                        <i class="fas fa-chart-bar"></i>Avail Services</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                          <li>
-                            <a href="View.php">View Equipments</a>
-                        </li>
-                        <li>
-                            <a href="Add.php">Post Equipments</a>
+                            <a href="View.php">View Services</a>
                         </li>
                     </ul>
                 </li>               
@@ -75,22 +70,68 @@ header('location: login.php');
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                  <li>
                                     <a href="ctransaction.php">Completed Transactions</a>
-                                </li>
+                                </li>     
                                 <li>
-                                    <a href="otransaction.php">Ongoing Transactions</a>
-                                </li>
-                                <li>
-                                    <a href="ptransaction.php">Pending Transactions</a>
-                                </li>
-                                <li>
-                                    <a href="dtransaction.php">Denied Transactions</a>
-                                </li>
+                                    <a href="mytransaction.php">See My Transactions</a>
+                                </li> 
                     </ul>
                     </li>   
                         </ul>
                     </nav>
                 </div>
             </aside>
+          <!-- END MENU SIDEBAR-->
+                    <!-- PAGE CONTAINER-->
+                    <div class="page-container">
+                        <!-- HEADER DESKTOP-->
+                        <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <form>
+                           
+                            </form>
+                            <div class="header-button">     
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu">
+                                        <div class="image">
+                                            <img src="images/icon/avatar-01.jpg" alt="adminsample">
+                                        </div>
+                                        <div class="content">
+                                        <a class="js-acc-btn"> Welcome <?php echo $_SESSION['username'] ?>! </a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <div class="image">
+                                                    <a href="#">
+                                                        <img src="images/icon/avatar-01.jpg" alt="adminsample">
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                        <a><?php echo $_SESSION['username'] ?></a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                            <div class="account-dropdown__footer">
+                                            <a href="changepass.php">
+                                                        <i class="zmdi zmdi-account"></i>Account</a>
+                                            <div class="account-dropdown__body">
+                                            <div class="account-dropdown__footer">
+                                                <a href="logout.php">
+                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                    </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
           <!-- END MENU SIDEBAR-->
 
           <!-- PAGE CONTAINER-->
@@ -100,8 +141,11 @@ header('location: login.php');
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form>
-                            <iframe src="http://free.timeanddate.com/clock/i6cof2h4/n145/fn8/fs20/ftb/pa10/tt0/tm1/td1/th2/tb1" frameborder="0" width="453" height="43"></iframe>
+                            <form class="form-header">
+                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports...">
+                                <button class="au-btn--submit" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button>
                             </form>
                             <div class="header-button">     
                                 <div class="account-wrap">
